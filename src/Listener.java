@@ -33,18 +33,23 @@ public class Listener {
 		FileInputStream keyStream = new FileInputStream(keyStorePath);
 		KeyStore keyStore = KeyStore.getInstance("BKS");
 
-		char[] pass;
-		// Load the KeyStore
+		// Get the password, either in Eclipse (bleh),
+		// or via command line :)
+		char[] pass = null;
 		if(System.console() != null)
 			pass = System.console().readPassword("[>] Enter password for keystore '"+keyStorePath+"': ");
 		else {
 			System.out.print("[>] Enter password for keystore: '"+keyStorePath+"': ");
 			pass = new BufferedReader(new InputStreamReader(System.in)).readLine().toCharArray();
 		}
+		
+		// Load the keystore and
+		// zero the password in memory
 		keyStore.load(keyStream, pass);
 		Arrays.fill(pass, '0');
 		keyStream.close();
 
+		// This is used to create the SSL Context
 		TrustManagerFactory tmf = TrustManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
 		tmf.init(keyStore);
 
