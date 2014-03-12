@@ -91,8 +91,7 @@ public class Listener {
 			
 			String line = buffReader.readLine();
 			System.out.println(line);
-			logOut.writeBytes(line+"\n");
-			
+			logOut.writeBytes(line+"\n");		
 		}
 	}
 
@@ -101,8 +100,8 @@ public class Listener {
 	// ---------------------------------------------- //
 	private class IOThread extends Thread {
 
-		InputStream input;
-		OutputStream output;
+		private InputStream input;
+		private OutputStream output;
 		boolean running;
 
 		public IOThread(InputStream i, OutputStream o) {
@@ -125,7 +124,6 @@ public class Listener {
 
 			} catch(Exception e) {
 				e.printStackTrace();
-				System.exit(1);
 			}
 
 			running = false;
