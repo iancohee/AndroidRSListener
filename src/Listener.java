@@ -1,12 +1,21 @@
+/*
+*
+*  Android Reverse Shell Listener, for use with Android Reverse Shell
+*
+*  This program is licensed under GPL 3. See LICENSE.txt
+*  for more information.
+*
+*  Disclaimer: This software was developed as a "proof-of-concept" application,
+*  and should never be used against devices which you do not own. Don't
+* */
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.Reader;
 import java.net.Socket;
 import java.security.KeyStore;
 import java.util.Arrays;
@@ -15,8 +24,6 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 
 public class Listener {
@@ -138,6 +145,13 @@ public class Listener {
 			System.err.println("Usage: java -classpath /path/to/bcprov-jdk15on-146.jar Listener </path/to/server.keystore> <port>");
 			System.exit(1);
 		}
+
+        // Print out GPL-related stuff
+        String licenseOutput = "<Android Reverse Shell (Listener)>  Copyright (C) <2014>  <Ian S. Cohee>\n" +
+                "This program comes with ABSOLUTELY NO WARRANTY.\n" +
+                "This is free software, and you are welcome to redistribute it\n" +
+                "under certain conditions.\n";
+        System.out.println(licenseOutput);
 
 		try {
 			Listener listener = new Listener(args[0], Integer.parseInt(args[1]));

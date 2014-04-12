@@ -7,7 +7,7 @@ Listener designed for my Android Reverse Shell.
 
 Usage
 
-    java -classpath /path/to/file:///home/solidus/git/AndroidRSListener/bcprov-jdk15on-146.jar Listener /path/to/server.keystore port
+    java -classpath /path/to/classFile:/path/to/bcprov-jdk15on-146.jar Listener /path/to/server.keystore port
 
 Where the password is
     
