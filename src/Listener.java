@@ -27,10 +27,10 @@ import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 
 public class Listener {
-	int port;
-	SSLServerSocket listeningSocket;
-	SSLContext sslContext;
-	DataOutputStream logOut;
+	private final int port;
+	private SSLServerSocket listeningSocket;
+	private SSLContext sslContext;
+	private DataOutputStream logOut;
 	
 	public Listener(String keyStorePath, int port) throws Exception {
 		this.port = port;
